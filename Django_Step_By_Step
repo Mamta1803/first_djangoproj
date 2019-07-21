@@ -1,0 +1,244 @@
+
+
+
+
+
+	
+	make sure pip and python commands are working
+		>pip --version
+		>python --version
+		>pip install virtualenv
+		>virtualenv denv
+		>denv\Scripts\activate
+		(denv)>pip install django==2.1
+		(denv)>pip install djangorestframework==3.9.2
+		(denv)>pip install swagger
+		(denv)>pip install mysqlclient.whl
+		(denv)>pip list
+			django -- web framework -- develop web apps
+			swagger -- to extract uris/req and res formats
+			restframework -- to develop rest apis,serializers[serialize],routers[uris],viewsets[actions/operations]
+			mysqlclient -- db related connector
+		
+		(denv)django startproject rootproj
+		(denv)cd rootproj
+		(denv)manage.py startapp appname
+		go to the pycharm import the project
+		make sure project is pointing to virtualenv wherever you have install 
+		above mentioned libs
+		
+		make necessary changes inside settings.py
+			register ur apps + 3rd party apps
+				appname
+				swagger
+				rest-framework
+			make database changes
+				and make sure whatever schema you have specificed 
+				here is already created into a database
+		
+		you can start writing models..and specify associations between the 
+		models
+		
+		start writing serializers --
+						+								+ specific for app
+		models -- serializers -- viewsets -- routers -- urls.py -- main urls.py
+		
+		register ur apps for admin model
+		
+		make sure to make changes for the 3rd party apps urls --
+			shud be written inside ----
+					main url's file
+		
+		
+		open same command prompt--
+			(denv)manage.py makemigrations
+					will create migration files for ur apps but not for 3rd party
+						apps (already created)
+			
+			(denv)manage.py migrate
+					-- will read out all the migrations ur + system + 3rd party..
+						and start creating tables inside specificed database schema
+			
+		
+			
+			(denv)manage.py createsuperuser --username=abcd --email=abs@gmail.com
+			enter
+			password : XXXXXXX
+			Confirmpassword : XXXXXXX
+			
+			(denv)> manage.py runserver
+			
+			
+			
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': 'dpydb',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
+    }
+}
+			
+			
+			
+			
+				from django.db import models
+
+# Create your models here.
+
+
+class Books(models.Model):
+    book_name = models.CharField(max_length=30)
+    author_name = models.CharField(max_length=30)
+    book_publication = models.CharField(max_length=30)
+    book_qty= models.IntegerField()
+    book_price = models.FloatField()
+
+    class Meta:
+        db_table="book_details"
+
+
+b1 = Books(book_name="Python Dev",author_name="AAA",book_publication="ABCD",book_qty=2,book_price=238.34)
+        
+		
+		
+		
+		
+		
+	
+	
+Types of 
+	Producer
+		--routers -- apis -- uris
+		--serializers -- serialization deserialization -- rest api
+		--viewsets -- rest api
+		--permissionclasses
+		--authentication
+		
+	Consume	
+		--views
+		-- templates
+Both	
+		-- fields of models
+		
+		
+		
+		curl -X GET "http://localhost:8000/v1/books/" -H "accept: application/json" -H "X-CSRFToken: NOdPtOKEtyNQEusnnmyztgBEGsvmaU31jvrVlKrh2qKLrJ2rHLO8chPUiUOndor0"
+		
+		
+	curl -X GET "http://localhost:8000/v1/books/" -H "accept: application/json" -H "X-CSRFToken: NOdPtOKEtyNQEusnnmyztgBEGsvmaU31jvrVlKrh2qKLrJ2rHLO8chPUiUOndor0"
+
+
+
+curl -X POST "http://localhost:8000/v1/books/" 
+
+-H "accept: application/json" -H "Content-Type: application/json" -H "X-CSRFToken: NOdPtOKEtyNQEusnnmyztgBEGsvmaU31jvrVlKrh2qKLrJ2rHLO8chPUiUOndor0" 
+
+
+
+
+-d "{ \"book_name\": \"pYTHONDS\", \"author_name\": \"ppppp\", \"book_publication\": \"acs\", \"book_qty\": 10, \"book_price\": 1233.0}"
+
+
+
+request format
+
+	|HTTP VERB|URI|HTTP VERSION	|
+	|HTTP REQUEST HEADER		|
+	|HTTP REQUEST BODY			| 
+	
+
+VERB/TYPES -- 
+	GET
+	POST
+	DELETE -- SOFT DELETE
+	PUT
+	
+	HEAD
+	PATCH
+	OPTION
+	TRACE
+	COPY
+
+URI-	BASEURI + URLS.PY
+		PROTOCOL:IPADDRESS:PORT/--URI---
+		
+HTTP VERSION 
+	1.1
+	
+	
+	
+RESPONSE FORMATS
+	|HTTP STATUS CODE|HTTP VERSION	|
+	|HTTP RESPONSE HEADER		|
+	|HTTP RESPONSE BODY			| 
+	
+	
+	
+
+
+
+
+
+https://www.getpostman.com/collections/83d32e195157779d7882
+
+
+
+import from a 
+	file -- export it into file
+	folder -- create new folder
+	link -- share collection
+	raw text -- curl
+	
+	
+	Postman -- rest api manual testing
+	
+	
+	Curl -- rest api manual testing -- linux machine command line utility
+	
+	Httpie -- windows - command line utility -- manual testing
+	
+Swagger -- Producer side -- Manual testing -- producer
+	
+	
+	requests -- testing from code.. -- REST api application integration 
+	we are going to use this lib
+	
+	
+	
+		
+Account	
+	GIT
+	PythonAnyWhere
+	
+	gitforwindows -- https://git-scm.com/download/win
+	
+	
+	path = C:\Program Files\Git\cmd
+	
+git init
+git add .
+git commit -m "first commit"
+git remote add origin https://github.com/yogymax/abcd.git
+git push -u origin master
+
+	
+	
+	
+	
+	Git installation
+		path - git/cmd
+	
+	pythonanywhereaccount
+	gitaccount
+
+
+
+		configure one end to end -- swagger app
+		postman
+		request
+		curl
+			
+	
